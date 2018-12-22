@@ -1,6 +1,10 @@
-import fir from "./tree.js";
+import fir from './tree.js';
 
-const getNeedlesCount = rows => new Array(rows).fill(0).reduce((sum, _, n) => sum + 2*n + 1, 0);
+const getNeedlesCount = rowsCount =>
+    new Array(rowsCount)
+        .fill(0)
+        .reduce((sum, _, n) => sum + 2*n + 1, 0);
+
 const getRandomPosition = rows => {
     const needlesCount = getNeedlesCount(rows);
     return Math.floor(Math.random() * needlesCount);
@@ -11,7 +15,7 @@ const needles = fir.container.getElementsByClassName('needle');
 let blinkingBulbs = [];
 function blink(rows) {
     blinkingBulbs.forEach(bulb => {
-        bulb.innerHTML = '^';
+        bulb.innerHTML = '1';
         bulb.style.color = 'green';
     });
     blinkingBulbs = [];
@@ -25,9 +29,9 @@ function blink(rows) {
         }
 
         blinkingBulbs.push(bulb);
-        bulb.innerHTML = '*';
+        bulb.innerHTML = '0';
         bulb.style.color = getRandomColor();
     });
 }
 
-setInterval(() => blink(fir.rows), 1000);
+setInterval(() => blink(fir.rowsCount), 1000);

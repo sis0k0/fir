@@ -30,4 +30,4 @@ function blink(rows) {
     });
 }
 
-setInterval(() => blink(20), 1000);
+setInterval(() => blink(fir.rows), 1000);

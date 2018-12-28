@@ -34,4 +34,10 @@ function blink(rows) {
     });
 }
 
-setInterval(() => blink(fir.rowsCount), 1000);
+function turnOn() {
+    setInterval(() => blink(fir.rowsCount), 1000);
+}
+
+turnOn();
+
+

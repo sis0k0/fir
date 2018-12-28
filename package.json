@@ -4,7 +4,8 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack-dev-server --mode=development"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/sis0k0/fir#readme",
   "devDependencies": {
     "webpack": "^4.28.2",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14"
   }
 }

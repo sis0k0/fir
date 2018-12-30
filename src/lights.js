@@ -1,4 +1,26 @@
+if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(_data => {
+        clearInterval(blinkInterval);
+    });
+
+    module.hot.accept(['./tree.js'], function() {
+        clearInterval(blinkInterval);
+        turnOn();
+    });
+}
+
 import fir from './tree.js';
+
+const BLINK_RATE = 200;
+const needles = () => fir.getNeedles();
+let blinkInterval;
+
+function turnOn() {
+    blinkInterval = setInterval(() => blink(fir.rowsCount), BLINK_RATE);
+}
+
+turnOn();
 
 const getNeedlesCount = rowsCount =>
     new Array(rowsCount)
@@ -10,7 +32,6 @@ const getRandomPosition = rows => {
     return Math.floor(Math.random() * needlesCount);
 };
 const getRandomColor = () => '#' + Math.random().toString(16).substr(-6);
-const needles = fir.container.getElementsByClassName('needle');
 
 let blinkingBulbs = [];
 function blink(rows) {
@@ -23,7 +44,7 @@ function blink(rows) {
     const bulbsCount = rows * 3;
     new Array(bulbsCount).fill().forEach(_ => {
         const bulbIndex = getRandomPosition(rows);
-        const bulb = needles[bulbIndex];
+        const bulb = needles()[bulbIndex];
         if (!bulb) {
             return;
         }
@@ -33,9 +54,3 @@ function blink(rows) {
         bulb.style.color = getRandomColor();
     });
 }
-
-function turnOn() {
-    setInterval(() => blink(fir.rowsCount), 1000);
-}
-
-turnOn();

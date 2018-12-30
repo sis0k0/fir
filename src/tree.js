@@ -1,6 +1,15 @@
+// if (module.hot) {
+//     module.hot.accept();
+// }
+
+const NEEDLE_CLASS = 'needle';
+
 const fir = {
-    rowsCount: 20,
+    rowsCount: 10,
     container: document.getElementById('tree'),
+    getNeedles: function() {
+        return this.container.getElementsByClassName(NEEDLE_CLASS);
+    },
     draw: function() {
         let output = '';
 
@@ -9,7 +18,7 @@ const fir = {
                 output += '&nbsp;&nbsp;';
             }
             for (let k = 0; k <= i * 2; k += 1) {
-                output += '<span class="needle">1</span>';
+                output += `<span class="${NEEDLE_CLASS}">1</span>`;
             }
             output += '<br />';
         }

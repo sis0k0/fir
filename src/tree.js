@@ -21,4 +21,3 @@ const fir = {
 fir.draw();
 
 export default fir;
-
